@@ -20,6 +20,7 @@ export class AddStudentComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  selected = 1
   @ViewChild('chipList', { static: true }) chipList;
   @ViewChild('resetStudentForm', { static: true }) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -70,7 +71,7 @@ export class AddStudentComponent implements OnInit {
     if (index >= 0) {
       this.subjectArray.splice(index, 1);
     }
-  }  
+  }
 
   /* Date */
   formatDate(e) {
@@ -78,12 +79,12 @@ export class AddStudentComponent implements OnInit {
     this.studentForm.get('dob').setValue(convertDate, {
       onlyself: true
     })
-  }  
+  }
 
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
     return this.studentForm.controls[controlName].hasError(errorName);
-  }  
+  }
 
   /* Submit book */
   submitStudentForm() {

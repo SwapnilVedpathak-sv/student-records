@@ -20,6 +20,7 @@ export class EditStudentComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  selected = 1;
   @ViewChild('chipList', { static: true }) chipList;
   @ViewChild('resetStudentForm', { static: true }) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -37,7 +38,7 @@ export class EditStudentComponent implements OnInit {
     private ngZone: NgZone,
     private actRoute: ActivatedRoute,
     private studentApi: ApiService
-  ) { 
+  ) {
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.studentApi.GetStudent(id).subscribe(data => {
       console.log(data.subjects)
@@ -49,8 +50,8 @@ export class EditStudentComponent implements OnInit {
         subjects: [data.subjects],
         dob: [data.dob, [Validators.required]],
         gender: [data.gender]
-      })      
-    })    
+      })
+    })
   }
 
   /* Reactive book form */
@@ -110,5 +111,5 @@ export class EditStudentComponent implements OnInit {
       });
     }
   }
-  
+
 }
